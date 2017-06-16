@@ -1,0 +1,22 @@
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { CommunicateService } from './communicate.service';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent{
+  subscription: Subscription;
+  products = [];
+  constructor(private _communicateService: CommunicateService) {
+    _communicateService.updateProducts(this.products);
+    // this.subscription = _communicateService.observedProducts.subscribe(
+    //   (updateProducts) => { this.products = updateProducts },
+    //   (err) => { },
+    //   () => { }
+    // )
+  }
+}
