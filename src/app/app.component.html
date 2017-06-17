@@ -2,4 +2,6 @@
 <a [routerLink]="['/']">Home</a>
 <a [routerLink]="['/products']">Products</a>
 <a [routerLink]="['/products','new']">Product Creation</a>
+<br>
+app.component: {{ products | json }}
 <router-outlet></router-outlet>

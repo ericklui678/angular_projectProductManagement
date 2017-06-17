@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommunicateService } from './communicate.service';
+import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
 import { EditComponent } from './edit/edit.component';
@@ -18,8 +19,9 @@ import { NewComponent } from './new/new.component';
     NewComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [CommunicateService],
   bootstrap: [AppComponent]

@@ -1,4 +1,3 @@
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { CommunicateService } from './communicate.service';
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
@@ -8,15 +7,19 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent{
+export class AppComponent implements OnDestroy{
   subscription: Subscription;
   products = [];
   constructor(private _communicateService: CommunicateService) {
     _communicateService.updateProducts(this.products);
-    // this.subscription = _communicateService.observedProducts.subscribe(
-    //   (updateProducts) => { this.products = updateProducts },
-    //   (err) => { },
-    //   () => { }
-    // )
+    this.subscription = _communicateService.observedProducts.subscribe(
+      (updateProducts) => { this.products = updateProducts },
+      (err) => { },
+      () => { }
+    )
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

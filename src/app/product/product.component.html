@@ -1,1 +1,10 @@
 <h1>Product List</h1>
+<div id='list'>
+    <div *ngFor='let product of products' class='products'>
+        <img src="{{product.url}}">
+        <h2>{{ product.title }}</h2>
+        <h3>${{ product.price }}</h3>
+        <button (click)='edit(product)'>Edit</button>
+        <button (click)='delete(product)'>Delete</button>
+    </div>
+</div>
